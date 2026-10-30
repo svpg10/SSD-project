@@ -1,0 +1,16 @@
+{
+  "ignore": ["**/node_modules/**"],
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "exclude": [
+            "@babel/plugin-transform-unicode-property-regex",
+            "@babel/plugin-transform-unicode-sets-regex"
+          ]
+        }
+      }
+    ]
+  ]
+}

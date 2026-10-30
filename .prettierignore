@@ -1,0 +1,6 @@
+apps/web/src/lib/api/generated.ts
+apps/web/src/lib/generated/
+apps/web/src/styles/tokens.css
+specs/
+node_modules/
+outputs/

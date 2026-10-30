@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "request_id": "00000000-0000-4000-8000-000000000004",
+  "basis": "synthetic",
+  "material": "synthetic",
+  "temperature": {
+    "value": 600,
+    "unit": "degC"
+  },
+  "kinetics": {
+    "mode": "arrhenius",
+    "A": {
+      "value": 2,
+      "unit": "m/s"
+    },
+    "Ea": {
+      "value": 0,
+      "unit": "J/mol"
+    }
+  },
+  "mass_transfer_coefficient": {
+    "value": 3,
+    "unit": "m/s"
+  },
+  "concentration": {
+    "mode": "ideal_gas",
+    "total_pressure": {
+      "value": 1,
+      "unit": "Pa"
+    },
+    "mole_fraction": 0.5,
+    "gas_temperature": {
+      "value": 900,
+      "unit": "K"
+    }
+  },
+  "growth_conversion": null,
+  "duration": null,
+  "flow": null,
+  "process_pressure": null,
+  "registry_snapshot": {
+    "id": "synthetic-fixture-v1",
+    "version": "1.0.0-synthetic",
+    "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+  },
+  "parameter_references": [],
+  "sweep": null,
+  "spatial": null,
+  "notes": "Synthetic request for branch coverage; not a material example. Ea=0 is a mathematical boundary case."
+}

@@ -1,0 +1,1506 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "00000000-0000-4000-8000-000000000010",
+  "name": "Synthetic arithmetic demonstration — not process data",
+  "exported_at": "2026-10-18T00:00:00Z",
+  "application_version": "documentation-fixture",
+  "snapshots": [
+    {
+      "schema_version": "1.0.0",
+      "request_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000101",
+      "created_at": "2026-10-18T00:00:00Z",
+      "model_id": "cvd-resistance-v1",
+      "canonicalization_version": "python-json-v1",
+      "input_sha256": "b425b260fb9ec21b1c4b4fcbeefaa8ed4c2932fe26bd50d995d333018af7a607",
+      "original_request": {
+        "schema_version": "1.0.0",
+        "request_id": "00000000-0000-4000-8000-000000000001",
+        "basis": "synthetic",
+        "material": "synthetic",
+        "temperature": {
+          "value": 600,
+          "unit": "degC"
+        },
+        "kinetics": {
+          "mode": "direct",
+          "ks": {
+            "value": 2,
+            "unit": "m/s"
+          }
+        },
+        "mass_transfer_coefficient": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "concentration": {
+          "mode": "direct",
+          "Cg": {
+            "value": 5,
+            "unit": "mol/m^3"
+          }
+        },
+        "growth_conversion": {
+          "value": 0.01,
+          "unit": "m^3/mol"
+        },
+        "duration": {
+          "value": 2,
+          "unit": "s"
+        },
+        "flow": null,
+        "process_pressure": null,
+        "registry_snapshot": {
+          "id": "synthetic-fixture-v1",
+          "version": "1.0.0-synthetic",
+          "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+        },
+        "parameter_references": [],
+        "sweep": null,
+        "spatial": null,
+        "notes": "ARBITRARY MATHEMATICAL FIXTURE. Nonphysical magnitudes; not material/process data."
+      },
+      "normalized_inputs": {
+        "schema_version": "1.0.0",
+        "request_id": "00000000-0000-4000-8000-000000000001",
+        "basis": "synthetic",
+        "material": "synthetic",
+        "temperature": {
+          "value": 873.15,
+          "unit": "K"
+        },
+        "kinetics": {
+          "mode": "direct",
+          "ks": {
+            "value": 2,
+            "unit": "m/s"
+          }
+        },
+        "mass_transfer_coefficient": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "concentration": {
+          "mode": "direct",
+          "Cg": {
+            "value": 5,
+            "unit": "mol/m^3"
+          }
+        },
+        "growth_conversion": {
+          "value": 0.01,
+          "unit": "m^3/mol"
+        },
+        "duration": {
+          "value": 2,
+          "unit": "s"
+        },
+        "flow": null,
+        "process_pressure": null,
+        "registry_snapshot": {
+          "id": "synthetic-fixture-v1",
+          "version": "1.0.0-synthetic",
+          "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+        },
+        "parameter_references": [],
+        "sweep": null,
+        "spatial": null,
+        "notes": "ARBITRARY MATHEMATICAL FIXTURE. Nonphysical magnitudes; not material/process data."
+      },
+      "registry_snapshot": {
+        "id": "synthetic-fixture-v1",
+        "version": "1.0.0-synthetic",
+        "parameters": [],
+        "constraints": [],
+        "sources": [],
+        "scientific_status": "synthetic_fixture",
+        "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+      },
+      "runtime": {
+        "application_version": "documentation-fixture",
+        "commit": "not-an-application-build",
+        "python": "not-executed-by-application",
+        "numpy": "not-executed",
+        "scipy": "not-executed",
+        "pint": "not-executed",
+        "lockfile_sha256": null,
+        "fixture_only": true
+      },
+      "scalar": {
+        "ks": {
+          "value": 2,
+          "unit": "m/s"
+        },
+        "hg": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "Cg": {
+          "value": 5,
+          "unit": "mol/m^3"
+        },
+        "Cs": {
+          "value": 3.0,
+          "unit": "mol/m^3"
+        },
+        "keff": {
+          "value": 1.2000000000000002,
+          "unit": "m/s"
+        },
+        "flux": {
+          "value": 6.000000000000001,
+          "unit": "mol/(m^2*s)"
+        },
+        "Da": 0.6666666666666666,
+        "surface_resistance_fraction": 0.6,
+        "gas_resistance_fraction": 0.4,
+        "regime": "mixed",
+        "growth": {
+          "value": 0.06000000000000001,
+          "unit": "m/s"
+        },
+        "growth_nm_min": {
+          "value": 3600000000.0000005,
+          "unit": "nm/min"
+        },
+        "thickness": {
+          "value": 0.12000000000000002,
+          "unit": "m"
+        }
+      },
+      "sweep": null,
+      "spatial": null,
+      "warnings": [
+        {
+          "code": "SYNTHETIC_ONLY",
+          "message": "Synthetic numerical demonstration; not material or process data.",
+          "path": "/basis"
+        },
+        {
+          "code": "DIRECT_KS_TEMPERATURE_INDEPENDENT",
+          "message": "Direct ks does not vary with temperature.",
+          "path": "/kinetics"
+        }
+      ],
+      "constraints": [
+        {
+          "kind": "pressure",
+          "status": "unknown",
+          "constraint_id": null,
+          "reason": "No numerical process limits are supplied; this is a synthetic fixture."
+        },
+        {
+          "kind": "flow",
+          "status": "unknown",
+          "constraint_id": null,
+          "reason": "No numerical process limits are supplied; this is a synthetic fixture."
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "request_id": "00000000-0000-4000-8000-000000000002",
+      "run_id": "00000000-0000-4000-8000-000000000102",
+      "created_at": "2026-10-18T00:00:00Z",
+      "model_id": "cvd-resistance-v1",
+      "canonicalization_version": "python-json-v1",
+      "input_sha256": "60d7f6b3221227ea912f5a90f312c0d70988168466a46ae1be4684f5e8df771c",
+      "original_request": {
+        "schema_version": "1.0.0",
+        "request_id": "00000000-0000-4000-8000-000000000002",
+        "basis": "synthetic",
+        "material": "synthetic",
+        "temperature": {
+          "value": 600,
+          "unit": "degC"
+        },
+        "kinetics": {
+          "mode": "direct",
+          "ks": {
+            "value": 2,
+            "unit": "m/s"
+          }
+        },
+        "mass_transfer_coefficient": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "concentration": {
+          "mode": "direct",
+          "Cg": {
+            "value": 5,
+            "unit": "mol/m^3"
+          }
+        },
+        "growth_conversion": {
+          "value": 0.01,
+          "unit": "m^3/mol"
+        },
+        "duration": {
+          "value": 2,
+          "unit": "s"
+        },
+        "flow": null,
+        "process_pressure": null,
+        "registry_snapshot": {
+          "id": "synthetic-fixture-v1",
+          "version": "1.0.0-synthetic",
+          "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+        },
+        "parameter_references": [],
+        "sweep": {
+          "start": {
+            "value": 600,
+            "unit": "degC"
+          },
+          "stop": {
+            "value": 750,
+            "unit": "degC"
+          },
+          "count": 4,
+          "gas_temperature_policy": "fixed"
+        },
+        "spatial": {
+          "model_id": "prescribed-radial-v1",
+          "radius": {
+            "value": 1,
+            "unit": "mm"
+          },
+          "edge_exclusion": {
+            "value": 0,
+            "unit": "mm"
+          },
+          "nr": 4,
+          "ntheta": 8,
+          "delta_T_edge_K": 0,
+          "concentration_edge_fraction": 0.2,
+          "transport_edge_fraction": 0
+        },
+        "notes": "ARBITRARY MATHEMATICAL FIXTURE. Nonphysical magnitudes; not material/process data."
+      },
+      "normalized_inputs": {
+        "schema_version": "1.0.0",
+        "request_id": "00000000-0000-4000-8000-000000000002",
+        "basis": "synthetic",
+        "material": "synthetic",
+        "temperature": {
+          "value": 873.15,
+          "unit": "K"
+        },
+        "kinetics": {
+          "mode": "direct",
+          "ks": {
+            "value": 2,
+            "unit": "m/s"
+          }
+        },
+        "mass_transfer_coefficient": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "concentration": {
+          "mode": "direct",
+          "Cg": {
+            "value": 5,
+            "unit": "mol/m^3"
+          }
+        },
+        "growth_conversion": {
+          "value": 0.01,
+          "unit": "m^3/mol"
+        },
+        "duration": {
+          "value": 2,
+          "unit": "s"
+        },
+        "flow": null,
+        "process_pressure": null,
+        "registry_snapshot": {
+          "id": "synthetic-fixture-v1",
+          "version": "1.0.0-synthetic",
+          "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+        },
+        "parameter_references": [],
+        "sweep": {
+          "start": {
+            "value": 873.15,
+            "unit": "K"
+          },
+          "stop": {
+            "value": 1023.15,
+            "unit": "K"
+          },
+          "count": 4,
+          "gas_temperature_policy": "fixed"
+        },
+        "spatial": {
+          "model_id": "prescribed-radial-v1",
+          "radius": {
+            "value": 0.001,
+            "unit": "m"
+          },
+          "edge_exclusion": {
+            "value": 0.0,
+            "unit": "m"
+          },
+          "nr": 4,
+          "ntheta": 8,
+          "delta_T_edge_K": 0,
+          "concentration_edge_fraction": 0.2,
+          "transport_edge_fraction": 0
+        },
+        "notes": "ARBITRARY MATHEMATICAL FIXTURE. Nonphysical magnitudes; not material/process data."
+      },
+      "registry_snapshot": {
+        "id": "synthetic-fixture-v1",
+        "version": "1.0.0-synthetic",
+        "parameters": [],
+        "constraints": [],
+        "sources": [],
+        "scientific_status": "synthetic_fixture",
+        "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+      },
+      "runtime": {
+        "application_version": "documentation-fixture",
+        "commit": "not-an-application-build",
+        "python": "not-executed-by-application",
+        "numpy": "not-executed",
+        "scipy": "not-executed",
+        "pint": "not-executed",
+        "lockfile_sha256": null,
+        "fixture_only": true
+      },
+      "scalar": {
+        "ks": {
+          "value": 2,
+          "unit": "m/s"
+        },
+        "hg": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "Cg": {
+          "value": 5,
+          "unit": "mol/m^3"
+        },
+        "Cs": {
+          "value": 3.0,
+          "unit": "mol/m^3"
+        },
+        "keff": {
+          "value": 1.2000000000000002,
+          "unit": "m/s"
+        },
+        "flux": {
+          "value": 6.000000000000001,
+          "unit": "mol/(m^2*s)"
+        },
+        "Da": 0.6666666666666666,
+        "surface_resistance_fraction": 0.6,
+        "gas_resistance_fraction": 0.4,
+        "regime": "mixed",
+        "growth": {
+          "value": 0.06000000000000001,
+          "unit": "m/s"
+        },
+        "growth_nm_min": {
+          "value": 3600000000.0000005,
+          "unit": "nm/min"
+        },
+        "thickness": {
+          "value": 0.12000000000000002,
+          "unit": "m"
+        }
+      },
+      "sweep": {
+        "gas_temperature_policy": "fixed",
+        "points": [
+          {
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 5,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 3.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 6.000000000000001,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": {
+                "value": 0.06000000000000001,
+                "unit": "m/s"
+              },
+              "growth_nm_min": {
+                "value": 3600000000.0000005,
+                "unit": "nm/min"
+              },
+              "thickness": {
+                "value": 0.12000000000000002,
+                "unit": "m"
+              }
+            }
+          },
+          {
+            "temperature": {
+              "value": 923.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 5,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 3.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 6.000000000000001,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": {
+                "value": 0.06000000000000001,
+                "unit": "m/s"
+              },
+              "growth_nm_min": {
+                "value": 3600000000.0000005,
+                "unit": "nm/min"
+              },
+              "thickness": {
+                "value": 0.12000000000000002,
+                "unit": "m"
+              }
+            }
+          },
+          {
+            "temperature": {
+              "value": 973.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 5,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 3.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 6.000000000000001,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": {
+                "value": 0.06000000000000001,
+                "unit": "m/s"
+              },
+              "growth_nm_min": {
+                "value": 3600000000.0000005,
+                "unit": "nm/min"
+              },
+              "thickness": {
+                "value": 0.12000000000000002,
+                "unit": "m"
+              }
+            }
+          },
+          {
+            "temperature": {
+              "value": 1023.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 5,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 3.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 6.000000000000001,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": {
+                "value": 0.06000000000000001,
+                "unit": "m/s"
+              },
+              "growth_nm_min": {
+                "value": 3600000000.0000005,
+                "unit": "nm/min"
+              },
+              "thickness": {
+                "value": 0.12000000000000002,
+                "unit": "m"
+              }
+            }
+          }
+        ]
+      },
+      "spatial": {
+        "model_id": "prescribed-radial-v1",
+        "nr": 4,
+        "ntheta": 8,
+        "usable_radius": {
+          "value": 0.001,
+          "unit": "m"
+        },
+        "usable_area": {
+          "value": 3.141592653589793e-06,
+          "unit": "m^2"
+        },
+        "radial_cell_edges_m": [
+          0.0,
+          0.0005,
+          0.0007071067811865476,
+          0.0008660254037844386,
+          0.001
+        ],
+        "points": [
+          {
+            "rho": {
+              "value": 0.0003535533905932738,
+              "unit": "m"
+            },
+            "area_weight": 0.25,
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3.0,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 5.125,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 3.0749999999999997,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 6.150000000000001,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": {
+                "value": 0.06150000000000001,
+                "unit": "m/s"
+              },
+              "growth_nm_min": {
+                "value": 3690000000.000001,
+                "unit": "nm/min"
+              },
+              "thickness": {
+                "value": 0.12300000000000003,
+                "unit": "m"
+              }
+            }
+          },
+          {
+            "rho": {
+              "value": 0.0006123724356957945,
+              "unit": "m"
+            },
+            "area_weight": 0.25,
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3.0,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 5.375,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 3.225,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 6.450000000000001,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": {
+                "value": 0.06450000000000002,
+                "unit": "m/s"
+              },
+              "growth_nm_min": {
+                "value": 3870000000.000001,
+                "unit": "nm/min"
+              },
+              "thickness": {
+                "value": 0.12900000000000003,
+                "unit": "m"
+              }
+            }
+          },
+          {
+            "rho": {
+              "value": 0.0007905694150420948,
+              "unit": "m"
+            },
+            "area_weight": 0.25,
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3.0,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 5.625,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 3.375,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 6.750000000000001,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": {
+                "value": 0.0675,
+                "unit": "m/s"
+              },
+              "growth_nm_min": {
+                "value": 4050000000.0000005,
+                "unit": "nm/min"
+              },
+              "thickness": {
+                "value": 0.135,
+                "unit": "m"
+              }
+            }
+          },
+          {
+            "rho": {
+              "value": 0.0009354143466934853,
+              "unit": "m"
+            },
+            "area_weight": 0.25,
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3.0,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 5.875,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 3.525,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 7.050000000000001,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": {
+                "value": 0.07050000000000001,
+                "unit": "m/s"
+              },
+              "growth_nm_min": {
+                "value": 4230000000.0000005,
+                "unit": "nm/min"
+              },
+              "thickness": {
+                "value": 0.14100000000000001,
+                "unit": "m"
+              }
+            }
+          }
+        ],
+        "metrics": {
+          "observable": "flux",
+          "unit": "mol/(m^2*s)",
+          "mean": 6.600000000000001,
+          "minimum_sampled": 6.150000000000001,
+          "maximum_sampled": 7.050000000000001,
+          "population_sigma": 0.33541019662496824,
+          "cv_percent": 5.081972676135881,
+          "half_range_percent": 6.818181818181812
+        },
+        "regime_area_fractions": {
+          "reaction_limited": 0,
+          "mixed": 1,
+          "mass_transfer_limited": 0
+        },
+        "disclosure": "Prescribed radial fields; no flow or mass-balance solution."
+      },
+      "warnings": [
+        {
+          "code": "SYNTHETIC_ONLY",
+          "message": "Synthetic numerical demonstration; not material or process data.",
+          "path": "/basis"
+        },
+        {
+          "code": "DIRECT_KS_TEMPERATURE_INDEPENDENT",
+          "message": "Direct ks does not vary with temperature.",
+          "path": "/kinetics"
+        },
+        {
+          "code": "PRESCRIBED_FIELDS_ONLY",
+          "message": "Prescribed radial fields; no flow or mass-balance solution.",
+          "path": "/spatial"
+        }
+      ],
+      "constraints": [
+        {
+          "kind": "pressure",
+          "status": "unknown",
+          "constraint_id": null,
+          "reason": "No numerical process limits are supplied; this is a synthetic fixture."
+        },
+        {
+          "kind": "flow",
+          "status": "unknown",
+          "constraint_id": null,
+          "reason": "No numerical process limits are supplied; this is a synthetic fixture."
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "request_id": "00000000-0000-4000-8000-000000000003",
+      "run_id": "00000000-0000-4000-8000-000000000103",
+      "created_at": "2026-10-18T00:00:00Z",
+      "model_id": "cvd-resistance-v1",
+      "canonicalization_version": "python-json-v1",
+      "input_sha256": "7320be624d732d770002c8ebc536140df6433c6830a9aa005096c3c06adf9d68",
+      "original_request": {
+        "schema_version": "1.0.0",
+        "request_id": "00000000-0000-4000-8000-000000000003",
+        "basis": "synthetic",
+        "material": "synthetic",
+        "temperature": {
+          "value": 600,
+          "unit": "degC"
+        },
+        "kinetics": {
+          "mode": "direct",
+          "ks": {
+            "value": 2,
+            "unit": "m/s"
+          }
+        },
+        "mass_transfer_coefficient": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "concentration": {
+          "mode": "direct",
+          "Cg": {
+            "value": 0,
+            "unit": "mol/m^3"
+          }
+        },
+        "growth_conversion": null,
+        "duration": null,
+        "flow": null,
+        "process_pressure": null,
+        "registry_snapshot": {
+          "id": "synthetic-fixture-v1",
+          "version": "1.0.0-synthetic",
+          "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+        },
+        "parameter_references": [],
+        "sweep": {
+          "start": {
+            "value": 600,
+            "unit": "degC"
+          },
+          "stop": {
+            "value": 750,
+            "unit": "degC"
+          },
+          "count": 4,
+          "gas_temperature_policy": "fixed"
+        },
+        "spatial": {
+          "model_id": "prescribed-radial-v1",
+          "radius": {
+            "value": 1,
+            "unit": "mm"
+          },
+          "edge_exclusion": {
+            "value": 0,
+            "unit": "mm"
+          },
+          "nr": 4,
+          "ntheta": 8,
+          "delta_T_edge_K": 0,
+          "concentration_edge_fraction": 0.2,
+          "transport_edge_fraction": 0
+        },
+        "notes": "ARBITRARY MATHEMATICAL FIXTURE. Nonphysical magnitudes; not material/process data."
+      },
+      "normalized_inputs": {
+        "schema_version": "1.0.0",
+        "request_id": "00000000-0000-4000-8000-000000000003",
+        "basis": "synthetic",
+        "material": "synthetic",
+        "temperature": {
+          "value": 873.15,
+          "unit": "K"
+        },
+        "kinetics": {
+          "mode": "direct",
+          "ks": {
+            "value": 2,
+            "unit": "m/s"
+          }
+        },
+        "mass_transfer_coefficient": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "concentration": {
+          "mode": "direct",
+          "Cg": {
+            "value": 0,
+            "unit": "mol/m^3"
+          }
+        },
+        "growth_conversion": null,
+        "duration": null,
+        "flow": null,
+        "process_pressure": null,
+        "registry_snapshot": {
+          "id": "synthetic-fixture-v1",
+          "version": "1.0.0-synthetic",
+          "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+        },
+        "parameter_references": [],
+        "sweep": {
+          "start": {
+            "value": 873.15,
+            "unit": "K"
+          },
+          "stop": {
+            "value": 1023.15,
+            "unit": "K"
+          },
+          "count": 4,
+          "gas_temperature_policy": "fixed"
+        },
+        "spatial": {
+          "model_id": "prescribed-radial-v1",
+          "radius": {
+            "value": 0.001,
+            "unit": "m"
+          },
+          "edge_exclusion": {
+            "value": 0.0,
+            "unit": "m"
+          },
+          "nr": 4,
+          "ntheta": 8,
+          "delta_T_edge_K": 0,
+          "concentration_edge_fraction": 0.2,
+          "transport_edge_fraction": 0
+        },
+        "notes": "ARBITRARY MATHEMATICAL FIXTURE. Nonphysical magnitudes; not material/process data."
+      },
+      "registry_snapshot": {
+        "id": "synthetic-fixture-v1",
+        "version": "1.0.0-synthetic",
+        "parameters": [],
+        "constraints": [],
+        "sources": [],
+        "scientific_status": "synthetic_fixture",
+        "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+      },
+      "runtime": {
+        "application_version": "documentation-fixture",
+        "commit": "not-an-application-build",
+        "python": "not-executed-by-application",
+        "numpy": "not-executed",
+        "scipy": "not-executed",
+        "pint": "not-executed",
+        "lockfile_sha256": null,
+        "fixture_only": true
+      },
+      "scalar": {
+        "ks": {
+          "value": 2,
+          "unit": "m/s"
+        },
+        "hg": {
+          "value": 3,
+          "unit": "m/s"
+        },
+        "Cg": {
+          "value": 0,
+          "unit": "mol/m^3"
+        },
+        "Cs": {
+          "value": 0.0,
+          "unit": "mol/m^3"
+        },
+        "keff": {
+          "value": 1.2000000000000002,
+          "unit": "m/s"
+        },
+        "flux": {
+          "value": 0.0,
+          "unit": "mol/(m^2*s)"
+        },
+        "Da": 0.6666666666666666,
+        "surface_resistance_fraction": 0.6,
+        "gas_resistance_fraction": 0.4,
+        "regime": "mixed",
+        "growth": null,
+        "growth_nm_min": null,
+        "thickness": null
+      },
+      "sweep": {
+        "gas_temperature_policy": "fixed",
+        "points": [
+          {
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 0,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 0.0,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": null,
+              "growth_nm_min": null,
+              "thickness": null
+            }
+          },
+          {
+            "temperature": {
+              "value": 923.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 0,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 0.0,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": null,
+              "growth_nm_min": null,
+              "thickness": null
+            }
+          },
+          {
+            "temperature": {
+              "value": 973.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 0,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 0.0,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": null,
+              "growth_nm_min": null,
+              "thickness": null
+            }
+          },
+          {
+            "temperature": {
+              "value": 1023.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 0,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 0.0,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": null,
+              "growth_nm_min": null,
+              "thickness": null
+            }
+          }
+        ]
+      },
+      "spatial": {
+        "model_id": "prescribed-radial-v1",
+        "nr": 4,
+        "ntheta": 8,
+        "usable_radius": {
+          "value": 0.001,
+          "unit": "m"
+        },
+        "usable_area": {
+          "value": 3.141592653589793e-06,
+          "unit": "m^2"
+        },
+        "radial_cell_edges_m": [
+          0.0,
+          0.0005,
+          0.0007071067811865476,
+          0.0008660254037844386,
+          0.001
+        ],
+        "points": [
+          {
+            "rho": {
+              "value": 0.0003535533905932738,
+              "unit": "m"
+            },
+            "area_weight": 0.25,
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3.0,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 0.0,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": null,
+              "growth_nm_min": null,
+              "thickness": null
+            }
+          },
+          {
+            "rho": {
+              "value": 0.0006123724356957945,
+              "unit": "m"
+            },
+            "area_weight": 0.25,
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3.0,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 0.0,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": null,
+              "growth_nm_min": null,
+              "thickness": null
+            }
+          },
+          {
+            "rho": {
+              "value": 0.0007905694150420948,
+              "unit": "m"
+            },
+            "area_weight": 0.25,
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3.0,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 0.0,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": null,
+              "growth_nm_min": null,
+              "thickness": null
+            }
+          },
+          {
+            "rho": {
+              "value": 0.0009354143466934853,
+              "unit": "m"
+            },
+            "area_weight": 0.25,
+            "temperature": {
+              "value": 873.15,
+              "unit": "K"
+            },
+            "result": {
+              "ks": {
+                "value": 2,
+                "unit": "m/s"
+              },
+              "hg": {
+                "value": 3.0,
+                "unit": "m/s"
+              },
+              "Cg": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "Cs": {
+                "value": 0.0,
+                "unit": "mol/m^3"
+              },
+              "keff": {
+                "value": 1.2000000000000002,
+                "unit": "m/s"
+              },
+              "flux": {
+                "value": 0.0,
+                "unit": "mol/(m^2*s)"
+              },
+              "Da": 0.6666666666666666,
+              "surface_resistance_fraction": 0.6,
+              "gas_resistance_fraction": 0.4,
+              "regime": "mixed",
+              "growth": null,
+              "growth_nm_min": null,
+              "thickness": null
+            }
+          }
+        ],
+        "metrics": {
+          "observable": "flux",
+          "unit": "mol/(m^2*s)",
+          "mean": 0.0,
+          "minimum_sampled": 0.0,
+          "maximum_sampled": 0.0,
+          "population_sigma": 0.0,
+          "cv_percent": null,
+          "half_range_percent": null
+        },
+        "regime_area_fractions": {
+          "reaction_limited": 0,
+          "mixed": 1,
+          "mass_transfer_limited": 0
+        },
+        "disclosure": "Prescribed radial fields; no flow or mass-balance solution."
+      },
+      "warnings": [
+        {
+          "code": "SYNTHETIC_ONLY",
+          "message": "Synthetic numerical demonstration; not material or process data.",
+          "path": "/basis"
+        },
+        {
+          "code": "DIRECT_KS_TEMPERATURE_INDEPENDENT",
+          "message": "Direct ks does not vary with temperature.",
+          "path": "/kinetics"
+        },
+        {
+          "code": "GROWTH_CONVERSION_MISSING",
+          "message": "Flux only; growth conversion beta is missing.",
+          "path": "/growth_conversion"
+        },
+        {
+          "code": "PRESCRIBED_FIELDS_ONLY",
+          "message": "Prescribed radial fields; no flow or mass-balance solution.",
+          "path": "/spatial"
+        },
+        {
+          "code": "ZERO_MEAN_UNIFORMITY_UNDEFINED",
+          "message": "Normalized metrics are undefined for zero mean.",
+          "path": "/spatial/metrics"
+        }
+      ],
+      "constraints": [
+        {
+          "kind": "pressure",
+          "status": "unknown",
+          "constraint_id": null,
+          "reason": "No numerical process limits are supplied; this is a synthetic fixture."
+        },
+        {
+          "kind": "flow",
+          "status": "unknown",
+          "constraint_id": null,
+          "reason": "No numerical process limits are supplied; this is a synthetic fixture."
+        }
+      ]
+    }
+  ]
+}

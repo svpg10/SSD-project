@@ -1,0 +1,15 @@
+{
+  "error": {
+    "code": "VALIDATION_FAILED",
+    "message": "One or more inputs are invalid.",
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "issues": [
+      {
+        "path": "/temperature",
+        "code": "OUTSIDE_STUDY_WINDOW",
+        "message": "Substrate temperature must be within 600–750°C."
+      }
+    ],
+    "retryable": false
+  }
+}

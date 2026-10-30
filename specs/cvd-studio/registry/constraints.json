@@ -1,0 +1,58 @@
+{
+  "registry_id": "ps64-unresolved",
+  "registry_version": "0.1.0-unresolved",
+  "constraints": [
+    {
+      "id": "polysilicon.pressure",
+      "material": "polysilicon",
+      "kind": "pressure",
+      "min": null,
+      "max": null,
+      "unit": "Pa",
+      "standard_temperature_K": null,
+      "standard_pressure_Pa": null,
+      "source_id": null,
+      "status": "missing",
+      "notes": "PS-64 mentions constraints but gives no numerical bounds."
+    },
+    {
+      "id": "polysilicon.flow",
+      "material": "polysilicon",
+      "kind": "flow",
+      "min": null,
+      "max": null,
+      "unit": "sccm",
+      "standard_temperature_K": null,
+      "standard_pressure_Pa": null,
+      "source_id": null,
+      "status": "missing",
+      "notes": "PS-64 mentions constraints but gives no numerical bounds."
+    },
+    {
+      "id": "silicon_nitride.pressure",
+      "material": "silicon_nitride",
+      "kind": "pressure",
+      "min": null,
+      "max": null,
+      "unit": "Pa",
+      "standard_temperature_K": null,
+      "standard_pressure_Pa": null,
+      "source_id": null,
+      "status": "missing",
+      "notes": "PS-64 mentions constraints but gives no numerical bounds."
+    },
+    {
+      "id": "silicon_nitride.flow",
+      "material": "silicon_nitride",
+      "kind": "flow",
+      "min": null,
+      "max": null,
+      "unit": "sccm",
+      "standard_temperature_K": null,
+      "standard_pressure_Pa": null,
+      "source_id": null,
+      "status": "missing",
+      "notes": "PS-64 mentions constraints but gives no numerical bounds."
+    }
+  ]
+}

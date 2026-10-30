@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "model_id": "cvd-resistance-v1",
+  "spatial_model_id": "prescribed-radial-v1",
+  "registry": {
+    "id": "ps64-unresolved",
+    "version": "0.1.0-unresolved",
+    "sha256": "62b27230cea10ba27f6eb4b8e5b66d9e4901aa1d258a0582068aa6071873e936"
+  },
+  "synthetic_registry": {
+    "id": "synthetic-fixture-v1",
+    "version": "1.0.0-synthetic",
+    "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+  },
+  "application_version": "documentation-fixture",
+  "commit": "not-an-application-build",
+  "max_request_bytes": 1048576,
+  "max_sweep_points": 501,
+  "max_radial_cells": 65536,
+  "max_nr": 256,
+  "max_ntheta": 256,
+  "timeout_seconds": 5,
+  "regime_thresholds": {
+    "reaction_below": 0.1,
+    "transfer_above": 10
+  },
+  "temperature_window_K": {
+    "min": 873.15,
+    "max": 1023.15
+  },
+  "max_project_bytes": 16777216,
+  "max_compare_snapshots": 4,
+  "max_notes_characters": 2000,
+  "max_active_calculations": 4,
+  "max_queued_calculations": 16,
+  "rate_per_minute": 60,
+  "rate_burst": 10
+}

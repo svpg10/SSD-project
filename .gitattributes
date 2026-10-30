@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.cmd text eol=crlf
+# These supplied artifacts have byte-for-byte integrity manifests.
+specs/cvd-studio/** -text
+reference/** -text
+*.png -text
+*.webp -text
+*.woff2 -text
+*.zip -text

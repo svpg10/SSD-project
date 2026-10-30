@@ -1,0 +1,12 @@
+{
+  "status": "pending_independent_data",
+  "rate_bias_limit": null,
+  "rate_rmse_limit": null,
+  "relative_error_limit": null,
+  "uniformity_error_limit": null,
+  "dataset": null,
+  "calibration_split": null,
+  "held_out_validation_split": null,
+  "reviewer": null,
+  "notes": "No acceptance accuracy threshold may be invented after inspecting test results."
+}

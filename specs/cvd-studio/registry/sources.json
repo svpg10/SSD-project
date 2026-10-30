@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "id": "SRC-PS64",
+      "title": "PS-64 Chemical Vapor Deposition (CVD) Thin-Film Uniformity Modeling",
+      "authors": null,
+      "year": null,
+      "url": null,
+      "doi": null,
+      "locator": "User-supplied image, complete table",
+      "accessed_on": "2026-10-18",
+      "scope": "Assignment materials, temperature window, equation, regimes and plots; no numerical flow/pressure bounds or material constants.",
+      "reuse_note": "User supplied; original rights retained."
+    },
+    {
+      "id": "SRC-IUPAC",
+      "title": "IUPAC Gold Book: Arrhenius equation",
+      "authors": "International Union of Pure and Applied Chemistry",
+      "year": 2025,
+      "url": "https://goldbook.iupac.org/terms/view/A00446/plain",
+      "doi": "10.1351/goldbook.A00446",
+      "locator": "Definition",
+      "accessed_on": "2026-10-18",
+      "scope": "Arrhenius functional form only; no CVD material parameters.",
+      "reuse_note": "Linked definition; no full source reproduced."
+    },
+    {
+      "id": "SRC-NIST",
+      "title": "CODATA molar gas constant",
+      "authors": "National Institute of Standards and Technology",
+      "year": 2022,
+      "url": "https://physics.nist.gov/cgi-bin/cuu/Value?r",
+      "doi": null,
+      "locator": "Numerical value and SI units",
+      "accessed_on": "2026-10-18",
+      "scope": "Universal gas constant only.",
+      "reuse_note": "Linked reference."
+    }
+  ]
+}

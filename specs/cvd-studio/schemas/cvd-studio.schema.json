@@ -1,0 +1,2250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cvd-studio.example/schemas/cvd-studio.schema.json",
+  "title": "CVD Studio schema 1.0.0 — ScenarioRequest root",
+  "$ref": "#/$defs/ScenarioRequest",
+  "$defs": {
+    "UUID": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "Hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "DateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "Temperature": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "K",
+            "degC"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "Velocity": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "m/s",
+            "cm/s"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "Concentration": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "mol/m^3"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "Pressure": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "Pa",
+            "Torr"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "Energy": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "J/mol",
+            "kJ/mol"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "Beta": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "m^3/mol"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "Duration": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "s",
+            "min"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "Length": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "m",
+            "mm"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "NonnegativeLength": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "m",
+            "mm"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "DirectKinetics": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "const": "direct"
+        },
+        "ks": {
+          "$ref": "#/$defs/Velocity"
+        }
+      },
+      "required": [
+        "mode",
+        "ks"
+      ],
+      "additionalProperties": false
+    },
+    "ArrheniusKinetics": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "const": "arrhenius"
+        },
+        "A": {
+          "$ref": "#/$defs/Velocity"
+        },
+        "Ea": {
+          "$ref": "#/$defs/Energy"
+        }
+      },
+      "required": [
+        "mode",
+        "A",
+        "Ea"
+      ],
+      "additionalProperties": false
+    },
+    "Kinetics": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DirectKinetics"
+        },
+        {
+          "$ref": "#/$defs/ArrheniusKinetics"
+        }
+      ]
+    },
+    "DirectConcentration": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "const": "direct"
+        },
+        "Cg": {
+          "$ref": "#/$defs/Concentration"
+        }
+      },
+      "required": [
+        "mode",
+        "Cg"
+      ],
+      "additionalProperties": false
+    },
+    "IdealGasConcentration": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "const": "ideal_gas"
+        },
+        "total_pressure": {
+          "$ref": "#/$defs/Pressure"
+        },
+        "mole_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "gas_temperature": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "K"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "mode",
+        "total_pressure",
+        "mole_fraction",
+        "gas_temperature"
+      ],
+      "additionalProperties": false
+    },
+    "ConcentrationModel": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DirectConcentration"
+        },
+        {
+          "$ref": "#/$defs/IdealGasConcentration"
+        }
+      ]
+    },
+    "Flow": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "const": "sccm"
+        },
+        "standard_temperature": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "K"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "standard_pressure": {
+          "$ref": "#/$defs/Pressure"
+        },
+        "gas_label": {
+          "type": "string",
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "standard_temperature",
+        "standard_pressure",
+        "gas_label"
+      ],
+      "additionalProperties": false
+    },
+    "Sweep": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/Temperature"
+        },
+        "stop": {
+          "$ref": "#/$defs/Temperature"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 501
+        },
+        "gas_temperature_policy": {
+          "const": "fixed"
+        }
+      },
+      "required": [
+        "start",
+        "stop",
+        "count",
+        "gas_temperature_policy"
+      ],
+      "additionalProperties": false
+    },
+    "Spatial": {
+      "type": "object",
+      "properties": {
+        "model_id": {
+          "const": "prescribed-radial-v1"
+        },
+        "radius": {
+          "$ref": "#/$defs/Length"
+        },
+        "edge_exclusion": {
+          "$ref": "#/$defs/NonnegativeLength"
+        },
+        "nr": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 256
+        },
+        "ntheta": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 256
+        },
+        "delta_T_edge_K": {
+          "type": "number"
+        },
+        "concentration_edge_fraction": {
+          "type": "number",
+          "minimum": -1
+        },
+        "transport_edge_fraction": {
+          "type": "number",
+          "exclusiveMinimum": -1
+        }
+      },
+      "required": [
+        "model_id",
+        "radius",
+        "edge_exclusion",
+        "nr",
+        "ntheta",
+        "delta_T_edge_K",
+        "concentration_edge_fraction",
+        "transport_edge_fraction"
+      ],
+      "additionalProperties": false
+    },
+    "SnapshotRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "version": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "sha256": {
+          "$ref": "#/$defs/Hash"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "ScenarioRequest": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "request_id": {
+          "$ref": "#/$defs/UUID"
+        },
+        "basis": {
+          "type": "string",
+          "enum": [
+            "synthetic",
+            "user_supplied",
+            "literature"
+          ]
+        },
+        "material": {
+          "type": "string",
+          "enum": [
+            "synthetic",
+            "polysilicon",
+            "silicon_nitride"
+          ]
+        },
+        "temperature": {
+          "$ref": "#/$defs/Temperature"
+        },
+        "kinetics": {
+          "$ref": "#/$defs/Kinetics"
+        },
+        "mass_transfer_coefficient": {
+          "$ref": "#/$defs/Velocity"
+        },
+        "concentration": {
+          "$ref": "#/$defs/ConcentrationModel"
+        },
+        "growth_conversion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Beta"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "duration": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Duration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "flow": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Flow"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "process_pressure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pressure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "registry_snapshot": {
+          "$ref": "#/$defs/SnapshotRef"
+        },
+        "parameter_references": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "minItems": 0,
+          "maxItems": 50
+        },
+        "sweep": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Sweep"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "spatial": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Spatial"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "schema_version",
+        "request_id",
+        "basis",
+        "material",
+        "temperature",
+        "kinetics",
+        "mass_transfer_coefficient",
+        "concentration",
+        "growth_conversion",
+        "duration",
+        "flow",
+        "process_pressure",
+        "registry_snapshot",
+        "parameter_references",
+        "sweep",
+        "spatial",
+        "notes"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "basis": {
+                "const": "synthetic"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "material": {
+                "const": "synthetic"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "material": {
+                "type": "string",
+                "enum": [
+                  "polysilicon",
+                  "silicon_nitride"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "concentration": {
+                "properties": {
+                  "mode": {
+                    "const": "ideal_gas"
+                  }
+                },
+                "required": [
+                  "mode"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "process_pressure": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Source": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 500
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "authors": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 500
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1900,
+              "maximum": 2200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "doi": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "locator": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 500
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "accessed_on": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "reuse_note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "authors",
+        "year",
+        "url",
+        "doi",
+        "locator",
+        "accessed_on",
+        "scope",
+        "reuse_note"
+      ],
+      "additionalProperties": false
+    },
+    "Applicability": {
+      "type": "object",
+      "properties": {
+        "precursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "co_reactants": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 500
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "film_phase": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reactor_geometry": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 500
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reaction_order": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "temperature_min_K": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "temperature_max_K": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pressure_min_Pa": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pressure_max_Pa": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "precursor",
+        "co_reactants",
+        "film_phase",
+        "reactor_geometry",
+        "reaction_order",
+        "temperature_min_K",
+        "temperature_max_K",
+        "pressure_min_Pa",
+        "pressure_max_Pa",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "ParameterRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "material": {
+          "type": "string",
+          "enum": [
+            "polysilicon",
+            "silicon_nitride"
+          ]
+        },
+        "symbol": {
+          "type": "string",
+          "enum": [
+            "A",
+            "Ea",
+            "hg",
+            "beta",
+            "film_density",
+            "film_molar_mass",
+            "yield"
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "m/s",
+            "J/mol",
+            "m^3/mol",
+            "kg/m^3",
+            "kg/mol",
+            "mol/mol"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "missing",
+            "user_supplied",
+            "candidate",
+            "reviewed"
+          ]
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_locator": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 500
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_unit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "conversion_note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uncertainty": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewed_on": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "applicability": {
+          "$ref": "#/$defs/Applicability"
+        }
+      },
+      "required": [
+        "id",
+        "material",
+        "symbol",
+        "value",
+        "unit",
+        "status",
+        "source_id",
+        "source_locator",
+        "original_value",
+        "original_unit",
+        "conversion_note",
+        "uncertainty",
+        "reviewer",
+        "reviewed_on",
+        "applicability"
+      ],
+      "additionalProperties": false
+    },
+    "ConstraintRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "material": {
+          "type": "string",
+          "enum": [
+            "polysilicon",
+            "silicon_nitride"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "pressure",
+            "flow"
+          ]
+        },
+        "min": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "Pa",
+            "sccm"
+          ]
+        },
+        "standard_temperature_K": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "standard_pressure_Pa": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "missing",
+            "candidate",
+            "reviewed"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "id",
+        "material",
+        "kind",
+        "min",
+        "max",
+        "unit",
+        "standard_temperature_K",
+        "standard_pressure_Pa",
+        "source_id",
+        "status",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "ParameterRegistry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "version": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "sha256": {
+          "$ref": "#/$defs/Hash"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ParameterRecord"
+          },
+          "minItems": 0,
+          "maxItems": 500
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ConstraintRecord"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Source"
+          },
+          "minItems": 0,
+          "maxItems": 500
+        },
+        "scientific_status": {
+          "type": "string",
+          "enum": [
+            "unresolved",
+            "synthetic_fixture",
+            "reviewed_transcription"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "sha256",
+        "parameters",
+        "constraints",
+        "sources",
+        "scientific_status"
+      ],
+      "additionalProperties": false
+    },
+    "Warning": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "path": {
+          "type": "string",
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "ConstraintEvaluation": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "pressure",
+            "flow"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "within_declared_bounds",
+            "outside_declared_bounds",
+            "not_provided"
+          ]
+        },
+        "constraint_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "kind",
+        "status",
+        "constraint_id",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "Regime": {
+      "type": "string",
+      "enum": [
+        "reaction_limited",
+        "mixed",
+        "mass_transfer_limited"
+      ]
+    },
+    "ScalarResult": {
+      "type": "object",
+      "properties": {
+        "ks": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "m/s"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "hg": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "m/s"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "Cg": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "mol/m^3"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "Cs": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "mol/m^3"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "keff": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "m/s"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "flux": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "mol/(m^2*s)"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "Da": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "surface_resistance_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "gas_resistance_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "regime": {
+          "$ref": "#/$defs/Regime"
+        },
+        "growth": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "unit": {
+                  "type": "string",
+                  "enum": [
+                    "m/s"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "growth_nm_min": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "unit": {
+                  "type": "string",
+                  "enum": [
+                    "nm/min"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "thickness": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "unit": {
+                  "type": "string",
+                  "enum": [
+                    "m"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "ks",
+        "hg",
+        "Cg",
+        "Cs",
+        "keff",
+        "flux",
+        "Da",
+        "surface_resistance_fraction",
+        "gas_resistance_fraction",
+        "regime",
+        "growth",
+        "growth_nm_min",
+        "thickness"
+      ],
+      "additionalProperties": false
+    },
+    "SweepPoint": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "K"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "result": {
+          "$ref": "#/$defs/ScalarResult"
+        }
+      },
+      "required": [
+        "temperature",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "SweepResult": {
+      "type": "object",
+      "properties": {
+        "gas_temperature_policy": {
+          "const": "fixed"
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SweepPoint"
+          },
+          "minItems": 2,
+          "maxItems": 501
+        }
+      },
+      "required": [
+        "gas_temperature_policy",
+        "points"
+      ],
+      "additionalProperties": false
+    },
+    "SpatialPoint": {
+      "type": "object",
+      "properties": {
+        "rho": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "m"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "area_weight": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "temperature": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "K"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "result": {
+          "$ref": "#/$defs/ScalarResult"
+        }
+      },
+      "required": [
+        "rho",
+        "area_weight",
+        "temperature",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "UniformityMetrics": {
+      "type": "object",
+      "properties": {
+        "observable": {
+          "const": "flux"
+        },
+        "unit": {
+          "const": "mol/(m^2*s)"
+        },
+        "mean": {
+          "type": "number",
+          "minimum": 0
+        },
+        "minimum_sampled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maximum_sampled": {
+          "type": "number",
+          "minimum": 0
+        },
+        "population_sigma": {
+          "type": "number",
+          "minimum": 0
+        },
+        "cv_percent": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "half_range_percent": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "observable",
+        "unit",
+        "mean",
+        "minimum_sampled",
+        "maximum_sampled",
+        "population_sigma",
+        "cv_percent",
+        "half_range_percent"
+      ],
+      "additionalProperties": false
+    },
+    "SpatialResult": {
+      "type": "object",
+      "properties": {
+        "model_id": {
+          "const": "prescribed-radial-v1"
+        },
+        "nr": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 256
+        },
+        "ntheta": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 256
+        },
+        "usable_radius": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "m"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "usable_area": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "m^2"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "radial_cell_edges_m": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 3,
+          "maxItems": 257
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SpatialPoint"
+          },
+          "minItems": 2,
+          "maxItems": 256
+        },
+        "metrics": {
+          "$ref": "#/$defs/UniformityMetrics"
+        },
+        "regime_area_fractions": {
+          "type": "object",
+          "properties": {
+            "reaction_limited": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "mixed": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "mass_transfer_limited": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "reaction_limited",
+            "mixed",
+            "mass_transfer_limited"
+          ],
+          "additionalProperties": false
+        },
+        "disclosure": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "model_id",
+        "nr",
+        "ntheta",
+        "usable_radius",
+        "usable_area",
+        "radial_cell_edges_m",
+        "points",
+        "metrics",
+        "regime_area_fractions",
+        "disclosure"
+      ],
+      "additionalProperties": false
+    },
+    "Runtime": {
+      "type": "object",
+      "properties": {
+        "application_version": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "commit": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "python": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "numpy": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "scipy": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "pint": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "lockfile_sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fixture_only": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "application_version",
+        "commit",
+        "python",
+        "numpy",
+        "scipy",
+        "pint",
+        "lockfile_sha256",
+        "fixture_only"
+      ],
+      "additionalProperties": false
+    },
+    "SimulationResponse": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "request_id": {
+          "$ref": "#/$defs/UUID"
+        },
+        "run_id": {
+          "$ref": "#/$defs/UUID"
+        },
+        "created_at": {
+          "$ref": "#/$defs/DateTime"
+        },
+        "model_id": {
+          "const": "cvd-resistance-v1"
+        },
+        "canonicalization_version": {
+          "const": "python-json-v1"
+        },
+        "input_sha256": {
+          "$ref": "#/$defs/Hash"
+        },
+        "original_request": {
+          "$ref": "#/$defs/ScenarioRequest"
+        },
+        "normalized_inputs": {
+          "$ref": "#/$defs/ScenarioRequest"
+        },
+        "registry_snapshot": {
+          "$ref": "#/$defs/ParameterRegistry"
+        },
+        "runtime": {
+          "$ref": "#/$defs/Runtime"
+        },
+        "scalar": {
+          "$ref": "#/$defs/ScalarResult"
+        },
+        "sweep": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SweepResult"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "spatial": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SpatialResult"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Warning"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ConstraintEvaluation"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "schema_version",
+        "request_id",
+        "run_id",
+        "created_at",
+        "model_id",
+        "canonicalization_version",
+        "input_sha256",
+        "original_request",
+        "normalized_inputs",
+        "registry_snapshot",
+        "runtime",
+        "scalar",
+        "sweep",
+        "spatial",
+        "warnings",
+        "constraints"
+      ],
+      "additionalProperties": false
+    },
+    "Issue": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "code": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "path",
+        "code",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "ErrorEnvelope": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "request_id": {
+              "$ref": "#/$defs/UUID"
+            },
+            "issues": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Issue"
+              },
+              "minItems": 0,
+              "maxItems": 100
+            },
+            "retryable": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "request_id",
+            "issues",
+            "retryable"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    "ProjectExport": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "project_id": {
+          "$ref": "#/$defs/UUID"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "exported_at": {
+          "$ref": "#/$defs/DateTime"
+        },
+        "application_version": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "snapshots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SimulationResponse"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "schema_version",
+        "project_id",
+        "name",
+        "exported_at",
+        "application_version",
+        "snapshots"
+      ],
+      "additionalProperties": false
+    },
+    "Health": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "live",
+            "ready"
+          ]
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "Capabilities": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "model_id": {
+          "const": "cvd-resistance-v1"
+        },
+        "spatial_model_id": {
+          "const": "prescribed-radial-v1"
+        },
+        "registry": {
+          "$ref": "#/$defs/SnapshotRef"
+        },
+        "synthetic_registry": {
+          "$ref": "#/$defs/SnapshotRef"
+        },
+        "application_version": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "commit": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "max_request_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        },
+        "max_sweep_points": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 501
+        },
+        "max_radial_cells": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 65536
+        },
+        "max_nr": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 256
+        },
+        "max_ntheta": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 256
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "regime_thresholds": {
+          "type": "object",
+          "properties": {
+            "reaction_below": {
+              "const": 0.1
+            },
+            "transfer_above": {
+              "const": 10
+            }
+          },
+          "required": [
+            "reaction_below",
+            "transfer_above"
+          ],
+          "additionalProperties": false
+        },
+        "temperature_window_K": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "const": 873.15
+            },
+            "max": {
+              "const": 1023.15
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "additionalProperties": false
+        },
+        "max_project_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16777216
+        },
+        "max_compare_snapshots": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "max_notes_characters": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2000
+        },
+        "max_active_calculations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "max_queued_calculations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16
+        },
+        "rate_per_minute": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60
+        },
+        "rate_burst": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "schema_version",
+        "model_id",
+        "spatial_model_id",
+        "registry",
+        "synthetic_registry",
+        "application_version",
+        "commit",
+        "max_request_bytes",
+        "max_sweep_points",
+        "max_radial_cells",
+        "max_nr",
+        "max_ntheta",
+        "timeout_seconds",
+        "regime_thresholds",
+        "temperature_window_K",
+        "max_project_bytes",
+        "max_compare_snapshots",
+        "max_notes_characters",
+        "max_active_calculations",
+        "max_queued_calculations",
+        "rate_per_minute",
+        "rate_burst"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

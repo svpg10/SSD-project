@@ -1,0 +1,5 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cvd-studio.example/schemas/simulation-response.schema.json",
+  "$ref": "cvd-studio.schema.json#/$defs/SimulationResponse"
+}

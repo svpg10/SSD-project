@@ -1,0 +1,9 @@
+{
+  "id": "synthetic-fixture-v1",
+  "version": "1.0.0-synthetic",
+  "parameters": [],
+  "constraints": [],
+  "sources": [],
+  "scientific_status": "synthetic_fixture",
+  "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+}

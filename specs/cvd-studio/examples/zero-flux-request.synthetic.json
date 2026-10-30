@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "request_id": "00000000-0000-4000-8000-000000000003",
+  "basis": "synthetic",
+  "material": "synthetic",
+  "temperature": {
+    "value": 600,
+    "unit": "degC"
+  },
+  "kinetics": {
+    "mode": "direct",
+    "ks": {
+      "value": 2,
+      "unit": "m/s"
+    }
+  },
+  "mass_transfer_coefficient": {
+    "value": 3,
+    "unit": "m/s"
+  },
+  "concentration": {
+    "mode": "direct",
+    "Cg": {
+      "value": 0,
+      "unit": "mol/m^3"
+    }
+  },
+  "growth_conversion": null,
+  "duration": null,
+  "flow": null,
+  "process_pressure": null,
+  "registry_snapshot": {
+    "id": "synthetic-fixture-v1",
+    "version": "1.0.0-synthetic",
+    "sha256": "7724f35368d3068b5e6920319c74f2d7cd80ad113e6257a09b234d27dbfd02a2"
+  },
+  "parameter_references": [],
+  "sweep": {
+    "start": {
+      "value": 600,
+      "unit": "degC"
+    },
+    "stop": {
+      "value": 750,
+      "unit": "degC"
+    },
+    "count": 4,
+    "gas_temperature_policy": "fixed"
+  },
+  "spatial": {
+    "model_id": "prescribed-radial-v1",
+    "radius": {
+      "value": 1,
+      "unit": "mm"
+    },
+    "edge_exclusion": {
+      "value": 0,
+      "unit": "mm"
+    },
+    "nr": 4,
+    "ntheta": 8,
+    "delta_T_edge_K": 0,
+    "concentration_edge_fraction": 0.2,
+    "transport_edge_fraction": 0
+  },
+  "notes": "ARBITRARY MATHEMATICAL FIXTURE. Nonphysical magnitudes; not material/process data."
+}

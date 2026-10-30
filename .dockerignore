@@ -1,0 +1,11 @@
+node_modules
+**/node_modules
+**/node_modules.previous
+**/.next-production.previous
+**/.next
+**/.next-production
+.venv
+.git
+work
+outputs
+test-results
